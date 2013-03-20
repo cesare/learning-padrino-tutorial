@@ -36,3 +36,4 @@ end
 Padrino.mount('SampleBlog::App', :app_file => Padrino.root('app/app.rb')).to('/')
 
 Padrino.mount("SampleBlog::Admin", :app_file => File.expand_path('../../admin/app.rb', __FILE__)).to("/admin")
+Padrino.mount('Api::App', :app_file => Padrino.root('api/app.rb')).to('/api')
