@@ -1,5 +1,5 @@
 SampleBlog::App.controllers :posts do
-  get :index do
+  get :index, provides: [:html, :json] do
     @posts = Post.all(order: 'created_at DESC')
     render 'posts/index'
   end
