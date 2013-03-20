@@ -4,7 +4,7 @@ SampleBlog::App.controllers :posts do
     render 'posts/index'
   end
 
-  get :show do
+  get :show, with: :id do
     @post = Post.find_by_id(params[:id])
     render 'posts/show'
   end
