@@ -1,22 +1,11 @@
 Api::App.controllers :posts do
-  # get :index, :map => '/foo/bar' do
-  #   session[:foo] = 'bar'
-  #   render 'index'
-  # end
+  get :index, provides: [:json] do
+    @posts = Post.all(order: 'created_at DESC')
+    render 'posts/index'
+  end
 
-  # get :sample, :map => '/sample/url', :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   'Maps to url '/foo/#{params[:id]}''
-  # end
-
-  # get '/example' do
-  #   'Hello world!'
-  # end
-  
-
+  get :show, map: '/posts/:id', provides: [:json] do
+    @post = Post.find_by_id(params[:id])
+    render 'posts/show'
+  end
 end
